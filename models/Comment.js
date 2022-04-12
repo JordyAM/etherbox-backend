@@ -3,6 +3,12 @@ const mongoose = require('../db/connection');
 
 const commentSchema = new mongoose.Schema({
     message: String,
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User',
+    },
 })
 
-module.exports = commentSchema;
+const Comment = mongoose.model('Comment', commentSchema)
+
+module.exports = Comment;

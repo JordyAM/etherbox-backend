@@ -1,6 +1,6 @@
 const mongoose = require("../db/connection");
 const commentSchema = require('./Comment')
-const boxSchema = require('./Box');
+// const boxSchema = require('./Box');
 
 
 const userSchema = new mongoose.Schema({
@@ -13,17 +13,24 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+},
+{
+    avatar: String,
+    // box: [boxSchema],
+    // comment: [commentSchema],
+},
+    {
     timestamps: true, 
     toJSON: {
         virtuals: true,
         transform: (_doc, ret) => {
             delete ret.password;
             return ret;
-        },
-    },
-    avatar: String,
-    box: [boxSchema],
-    comment: [commentSchema],
-})
+        }
+    }
+    }
+    
+)
+const User = mongoose.model('User', userSchema)
 
-module.exports = userSchema;
+module.exports = User;

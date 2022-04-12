@@ -20,6 +20,15 @@ app.get("/", (req, res) => {
     return res,redirect("/")
 })
 
+const boxController = require('./controllers/boxController');
+app.use('/boxes', boxController);
+
+const userController = require('./controllers/userController');
+app.use('/users', userController);
+
+const commentController = require('./controllers/commentController');
+app.use('/comments', commentController)
+
 http.listen(app.get('port'), () => {
 	console.log(`✅ PORT: ${app.get('port')} 🌟`);
 });
