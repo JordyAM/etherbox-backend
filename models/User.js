@@ -1,9 +1,28 @@
 const mongoose = require("../db/connection");
-const commentSchema = require('')
+const commentSchema = require('./Comment')
+const boxSchema = require('./Box');
+
 
 const userSchema = new mongoose.Schema({
-    name: String,
+    email: {
+        type: String,
+        required: true, 
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    timestamps: true, 
+    toJSON: {
+        virtuals: true,
+        transform: (_doc, ret) => {
+            delete ret.password;
+            return ret;
+        },
+    },
     avatar: String,
+    box: [boxSchema],
     comment: [commentSchema],
 })
 
