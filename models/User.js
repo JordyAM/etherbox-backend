@@ -1,6 +1,5 @@
 const mongoose = require("../db/connection");
 const commentSchema = require('./Comment')
-// const boxSchema = require('./Box');
 
 
 const userSchema = new mongoose.Schema({
@@ -15,8 +14,6 @@ const userSchema = new mongoose.Schema({
     },
     avatar: String,
 },
-    // box: [boxSchema],
-    // comment: [commentSchema],
     {
     timestamps: true, 
     toJSON: {

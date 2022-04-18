@@ -14,9 +14,6 @@ router.post('/:boxid', (req, res) => {
                 return comment;
             }
         ).then(comment => res.json(comment))
-    // Comment.create(req.body)
-    //     .then((comment) => res.json(comment))
-    //     .catch(console.error());
 })
 })
 router.delete('/user/:id', (req, res) => {
